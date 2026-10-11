@@ -26,9 +26,10 @@ It builds one deployment ZIP and an SBOM, then runs smoke and browser tests
 against that ZIP. Staging and production use GitHub environments; production
 requires approval by the configured reviewer.
 
-The initial workflow includes placeholder deployment jobs, as in Part 2 of
-the lab. `pipeline-with-aws-deploy.yml.txt` contains the supplied AWS jobs to
-activate after the Lambda functions and environment configuration are ready.
+The workflow deploys the tested ZIP to AWS Lambda in staging, runs the smoke
+tests against its Function URL, and waits for production environment approval.
+Production receives the same ZIP and runs the same smoke tests. The supplied
+`pipeline-with-aws-deploy.yml.txt` remains available as the professor's reference.
 
 For AWS deployment, use `us-east-1` and Python 3.13 Lambda functions named
 `quackloan-staging` and `quackloan-prod`. Configure each GitHub environment
